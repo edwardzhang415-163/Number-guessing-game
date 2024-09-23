@@ -7,7 +7,7 @@ import { colors } from '../helpers/colors';
 import Card from '../components/Card';
 import Input from '../components/Input';
 
-const GameScreen = ({ userInfo, onRestart, onNewGame }) => {
+const GameScreen = ({ userInfo, onRestart}) => {
   const [gameState, setGameState] = useState('initial'); 
   const [targetNumber, setTargetNumber] = useState(null);
   const [guess, setGuess] = useState('');

@@ -21,18 +21,13 @@ export default function App() {
 
   const handleContinue = () => {
     setConfirmVisible(false);
-    setCurrentScreen('game'); // Assuming you will add the game screen later
+    setCurrentScreen('game'); 
   };
 
   const handleRestart = () => {
     setCurrentScreen('start');
     setUserInfo(null);
   };
-
-  const handleNewGame = () => {
-    setCurrentScreen('game');
-  };
-
   return (
     <>
       <StatusBar style="auto" />
@@ -48,7 +43,6 @@ export default function App() {
         <GameScreen
           userInfo={userInfo}
           onRestart={handleRestart}
-          onNewGame={handleNewGame}
         />
       )}  
     </>
