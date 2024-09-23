@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import StartScreen from './screens/StartScreen';
-import ConfirmScreen from './screens/ConfirmScreen';
+import StartScreen from './Screen/StartScreen';
+import ConfirmScreen from './Screen/ConfirmScreen';
+import GameScreen from './Screen/GameScreen';
 
 export default function App() {
   const [currentScreen, setCurrentScreen] = useState('start');
@@ -23,11 +24,19 @@ export default function App() {
     setCurrentScreen('game'); // Assuming you will add the game screen later
   };
 
+  const handleRestart = () => {
+    setCurrentScreen('start');
+    setUserInfo(null);
+  };
+
+  const handleNewGame = () => {
+    setCurrentScreen('game');
+  };
+
   return (
     <>
       <StatusBar style="auto" />
       {currentScreen === 'start' && <StartScreen onRegister={handleRegister} />}
-      {currentScreen === 'game' && <StartScreen onRegister={handleRegister} />}
       {currentScreen === 'start' && isConfirmVisible == true && 
         < ConfirmScreen
           visible = {isConfirmVisible}
@@ -35,6 +44,13 @@ export default function App() {
           onGoBack={handleGoBack}
           onContinue={handleContinue}
         />}
+        {currentScreen === 'game' && (
+        <GameScreen
+          userInfo={userInfo}
+          onRestart={handleRestart}
+          onNewGame={handleNewGame}
+        />
+      )}  
     </>
   );
 }

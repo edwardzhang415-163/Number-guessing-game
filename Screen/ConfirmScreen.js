@@ -2,6 +2,8 @@ import React from 'react';
 import { Modal, View, Text, Button, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { colors } from '../helpers/colors';
+import Card from '../components/Card';
+import Input from '../components/Input';
 
 const ConfirmScreen = ({ visible, userInfo, onGoBack, onContinue }) => {
   return (
@@ -11,7 +13,7 @@ const ConfirmScreen = ({ visible, userInfo, onGoBack, onContinue }) => {
       visible={visible}
     >
       <LinearGradient colors={[colors.fadeBackground, colors.fadeBackground]} style={styles.modalBackground}>
-        <View style={styles.card}>
+        <Card>
           <Text style={styles.title}>Confirm Your Information</Text>
           <Text>Name: {userInfo.name}</Text>
           <Text>Email: {userInfo.email}</Text>
@@ -20,7 +22,7 @@ const ConfirmScreen = ({ visible, userInfo, onGoBack, onContinue }) => {
             <Button title="Go Back" onPress={onGoBack} />
             <Button title="Continue" onPress={onContinue} />
           </View>
-        </View>
+        </Card>
       </LinearGradient>
     </Modal>
   );

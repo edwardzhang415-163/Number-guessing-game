@@ -5,6 +5,8 @@ import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import Checkbox from 'expo-checkbox';
 import { colors } from '../helpers/colors';
+import Card from '../components/Card';
+import Input from '../components/Input';
 
 const StartScreen = ({ onRegister }) => {
   const [name, setName] = useState('');
@@ -66,30 +68,13 @@ const StartScreen = ({ onRegister }) => {
   return (
     <LinearGradient colors={[colors.background, colors.secondary]} style={styles.container}>
       <Text style={styles.welcomeHeader}>Welcome</Text>
-      <View style={styles.card}>
+      <Card>
         <Text style={styles.title}>Register</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Name"
-          value={name}
-          onChangeText={validateName}
-        />
+        <Input placeholder="Name" value={name} onChangeText={validateName} />
         {nameError ? <Text style={styles.errorText}>{nameError}</Text> : null}
-        <TextInput
-          style={styles.input}
-          placeholder="Email"
-          value={email}
-          onChangeText={validateEmail}
-          keyboardType="email-address"
-        />
+        <Input placeholder="Email" value={email} onChangeText={validateEmail} keyboardType="email-address" />
         {emailError ? <Text style={styles.errorText}>{emailError}</Text> : null}
-        <TextInput
-          style={styles.input}
-          placeholder="Phone"
-          value={phone}
-          onChangeText={validatePhone}
-          keyboardType="name-phone-pad"
-        />
+        <Input placeholder="Phone" value={phone} onChangeText={validatePhone} keyboardType="name-phone-pad" />
         {phoneError ? <Text style={styles.errorText}>{phoneError}</Text> : null}
         <View style={styles.checkboxContainer}>
           <Checkbox
@@ -103,7 +88,7 @@ const StartScreen = ({ onRegister }) => {
           <Button title="Reset" onPress={handleReset} color={colors.secondary} />
           <Button title="Register" onPress={handleRegister} disabled={!isChecked} color={colors.primary} />
         </View>
-      </View>
+      </Card>
     </LinearGradient>
   );
 };
@@ -114,29 +99,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  card: {
-    backgroundColor: colors.cardBackground,
-    borderRadius: 10,
-    padding: 20,
-    width: '80%',
-    elevation: 5,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-  },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
     textAlign: 'center',
-  },
-  input: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    marginBottom: 10,
-    paddingHorizontal: 10,
   },
   errorText: {
     color: colors.error,
@@ -154,7 +121,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
   },
-  welcomeHeader: {  // Added style for welcome header
+  welcomeHeader: {  
     fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
